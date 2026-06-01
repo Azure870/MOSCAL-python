@@ -1,0 +1,207 @@
+% \documentclass[mathserif,9pt]{beamer}
+
+\documentclass[handout,mathserif,9pt]{beamer}
+
+\usepackage[space]{ctex}
+\usepackage[version=4]{mhchem}
+
+\usepackage{amsmath,amsfonts}
+\usepackage{graphicx,epstopdf}  %epsfig,
+%\usepackage{color}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{subfigure}
+\usepackage{float}
+%\usepackage{titlesec}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{tensor}
+% \usepackage{MnSymbol}
+% \usepackage{enumitem}
+\usepackage[T1]{fontenc}
+% \usepackage{newtxtext}
+% \usepackage[smallerops]{newtxmath}
+\usepackage{bm}
+
+\usepackage{bbm}
+
+
+\usefonttheme{serif}
+
+% \usepackage{times}
+\usefonttheme{professionalfonts}
+
+% \usetheme{Madrid}
+
+% \usetheme{Darmstadt} 
+\usetheme{Boadilla}
+% \usetheme{default}
+
+\newcommand{\ud}{\mathrm{d}}
+\newcommand{\Tr}{\mathrm{Tr}}
+
+\renewcommand{\Ref}[1]{Ref.\,\onlinecite{#1}}
+\newcommand{\Sec}[1]{Sec.\,\ref{#1}}
+\newcommand{\nl}{\nonumber \\}
+\newcommand{\Eq}[1]{Eq.\,(\ref{#1})}
+\newcommand{\Eqs}[1]{Eqs.\,(\ref{#1})}
+\newcommand{\Fig}[1]{Fig.\,\ref{#1}}
+\newcommand{\Tab}[1]{Table \ref{#1}}
+\newcommand{\con}{\mathrm{mol/L}}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\newcommand{\iChEM}{{\it i}{\rm ChEM\ }}
+%\newcommand{\etal}{{\it et al.\ }}
+\newcommand{\cf}{cf.\ }
+\newcommand{\Sch}{Schr\"{o}dinger\ }
+\newcommand{\greater}{\mbox{\tiny $>$}}
+\newcommand{\lesser}{\mbox{\tiny $<$}}
+\newcommand{\lgter}{\mbox{\tiny $\lessgtr$}}
+\newcommand{\w}{\omega}
+\newcommand{\wti}{\widetilde}
+\newcommand{\ti}{\tilde}
+\newcommand{\AB}{\mbox{\tiny $AB$}}
+\newcommand{\BA}{\mbox{\tiny $BA$}}
+\newcommand{\B}{\mbox{\tiny B}}
+\newcommand{\F}{\mbox{\tiny F}}
+\newcommand{\tK}{\mbox{\tiny K}}
+\newcommand{\ET}{\mbox{\tiny ET}}
+\newcommand{\s}{\mbox{\tiny S}}
+\newcommand{\tT}{\mbox{\tiny T}}
+\newcommand{\tL}{\mbox{\tiny L}}
+\newcommand{\tR}{\mbox{\tiny R}}
+\newcommand{\tB}{\mbox{\tiny B}}
+\newcommand{\tW}{\mbox{\tiny W}}
+\newcommand{\tS}{\mbox{\tiny S}}
+\newcommand{\T}{\mbox{\tiny T}}
+\newcommand{\app}{\mbox{\tiny app}}
+\newcommand{\tot}{\mbox{\tiny tot}}
+\newcommand{\SB}{\mbox{\tiny SB}}
+\newcommand{\dg}{\dagger}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lla}{\langle\langle}
+\newcommand{\rra}{\rangle\rangle}
+\newcommand{\La}{\big\la}
+\newcommand{\Ra}{\big\ra}
+\newcommand{\BO}{\mbox{\tiny BO}}
+
+
+
+%\beamertemplateshadingbackground{blue!5}{yellow!10}
+\makeatother
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}
+
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle\hspace*{13em}
+    \insertframenumber{} / \inserttotalframenumber\hspace*{0ex}
+  \end{beamercolorbox}}
+
+  \vskip0pt%
+}
+\makeatletter
+
+
+
+\author{Yu Su}
+
+\institute{\large \textit{Hefei National Laboratory for Physical Sciences at the Microscale, University of Science and Technology of China}}
+
+\title{Notes on calculation}
+
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{矩方程}
+
+  \begin{itemize}
+    \item Hamiltonian
+    \begin{align}
+      H_{\T} = h_{\tL} + h_{\tR} + \hat F_{\tL}\hat F_{\tR}
+    \end{align}
+    \item 耗散子分解
+    \begin{align}
+      \hat F_{\alpha = \tL,\tR} = \sum_k \hat f_{\alpha k}
+    \end{align}
+    \item 定义
+    \begin{align}
+      f_{\alpha k}(t) \equiv {\rm Tr}[\hat f_{\alpha k}\rho_{\T}(t)], \quad \sigma_{\alpha k,\alpha'k'}(t) \equiv {\rm Tr}[(\hat f_{\alpha k}\hat f_{\alpha' k'})^\circ\rho_{\T}(t)] = \sigma_{\alpha' k',\alpha k}(t)
+    \end{align}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{矩方程}
+
+  \begin{itemize}
+    \item 均值的方程
+    \begin{align}
+      \dot f_{\tL k}(t) &= {\rm Tr}[\hat f_{\tL k}\dot\rho_{\T}(t)] = -\gamma_{\tL k}f_{\tL k}(t) -i (\eta_{\tL k} - \eta_{\tL \bar k}^*)\sum_{k'}f_{\tR k'}(t)\\
+      \dot f_{\tR k}(t) &= {\rm Tr}[\hat f_{\tR k}\dot\rho_{\T}(t)] = -\gamma_{\tR k}f_{\tR k}(t) -i (\eta_{\tR k} - \eta_{\tR \bar k}^*)\sum_{k'}f_{\tL k'}(t)
+    \end{align}
+    由初值$f_{\alpha k}(0) = 0$可知
+    \begin{align}
+      f_{\alpha k}(t) = 0
+    \end{align}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{矩方程}
+
+  \begin{itemize}
+    \item 方差的方程
+    \begin{align}
+      \dot \sigma_{\tL k,\tL k'} &= -(\gamma_{\tL k} + \gamma_{\tL k'})\sigma_{\tL k,\tL k'} -i (\eta_{\tL k} - \eta_{\tL \bar k}^*)\sum_{j}\sigma_{\tL k',\tR j}\nl
+      &\quad \,-i (\eta_{\tL k'} - \eta_{\tL \bar k'}^*)\sum_{j}\sigma_{\tL k,\tR j} \\ 
+      \dot \sigma_{\tR k,\tR k'} &= -(\gamma_{\tR k} + \gamma_{\tR k'})\sigma_{\tR k,\tR k'} -i (\eta_{\tR k} - \eta_{\tR \bar k}^*)\sum_{j}\sigma_{\tR k',\tL j}\nl
+      &\quad \,-i (\eta_{\tR k'} - \eta_{\tR \bar k'}^*)\sum_{j}\sigma_{\tR k,\tL j} \\ 
+      \dot \sigma_{\tL k,\tR k'} &= -(\gamma_{\tL k} + \gamma_{\tR k'})\sigma_{\tL k,\tR k'} -i (\eta_{\tL k}\eta_{\tR k'} - \eta_{\tL \bar k}^*\eta_{\tR \bar k'}^*) \nl
+      &\quad \,-i (\eta_{\tL k} - \eta_{\tL \bar k}^*)\sum_{j}\sigma_{\tR k',\tR j} -i (\eta_{\tR k'} - \eta_{\tR \bar k'}^*)\sum_{j}\sigma_{\tL k,\tL j}
+    \end{align}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{运动方程}
+
+  \begin{align}
+    \dot\rho_{\bf n}^{(n)}(t) &= -\bigg( H_{\tS}^\times + \sum_k n_k\gamma_k \bigg)\rho_{\bf n}^{(n)}(t) -i \hat Q_1\rho_{\bf n}^{(n)}(t; \hat F_1^{r_1}) -i \hat Q_2\rho_{\bf n}^{(n)}(t; \hat F_2^{r_2}) \cdots  \nl
+    &\quad \,-i \hat Q_{12}\rho_{\bf n}^{(n)}(t; \hat F_1^{s_1}\hat F_2^{s_2}) + \cdots
+  \end{align}
+
+  \begin{align}
+    \hat F_a = \sum_k p_{ak}\hat f_k
+  \end{align}
+
+  \begin{align}
+    \rho_{\bf n}^{(n)}(t; \hat F_a) = \sum_k p_{ak} \bigg[ \sqrt{n_{k} + 1}\sqrt{||\eta_k||} \rho_{{\bf n}_{k}^+}^{(n+1)}(t) + \frac{\sqrt{n_k} \eta_k}{\sqrt{||\eta_k||}} \rho_{{\bf n}_{k}^-}^{(n-1)}(t)\bigg]
+  \end{align}
+
+  \begin{align}
+    \rho_{\bf n}^{(n)}(t; \hat \Phi_a) = \sum_k -\gamma_{k}p_{ak} \bigg[ \sqrt{n_{k} + 1}\sqrt{||\eta_k||} \rho_{{\bf n}_{k}^+}^{(n+1)}(t) - \frac{\sqrt{n_k} \eta_k}{\sqrt{||\eta_k||}} \rho_{{\bf n}_{k}^-}^{(n-1)}(t)\bigg]
+  \end{align}
+
+  \begin{align}
+    \rho_{\bf n}^{(n)}(t; \hat F_a^2) = \sum_k p_{ak} \bigg[ \sqrt{n_{k} + 1}\sqrt{||\eta_k||} \rho_{{\bf n}_{k}^+}^{(n+1)}(t; \hat F_a) + \frac{\sqrt{n_k} \eta_k}{\sqrt{||\eta_k||}} \rho_{{\bf n}_{k}^-}^{(n-1)}(t; \hat F_a)\bigg]
+  \end{align}
+
+\end{frame}
+
+\end{document}
